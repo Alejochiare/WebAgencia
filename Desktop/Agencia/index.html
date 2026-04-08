@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motorwagen Automotores | Autos Usados y 0km — Balnearia, Córdoba</title>
+<meta name="description" content="Motorwagen Automotores — Venta de autos usados y 0km en Balnearia, Córdoba. ☎ 3564 410038. Te asesoramos para que llegués al auto que buscás.">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#vehiculos" onclick="closeMobileMenu()">Vehículos</a>
+  <a href="#financiacion" onclick="closeMobileMenu()">Financiación</a>
+  <a href="#vender" onclick="closeMobileMenu()">Vender mi auto</a>
+  <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-icon">M</div>
+    <div class="nav-logo-text">
+      Motorwagen
+      <small>Automotores</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#vehiculos">Vehículos</a>
+    <a href="#financiacion">Financiación</a>
+    <a href="#vender">Vender</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="https://wa.me/5493564410038?text=Hola%2C+quiero+información+sobre+los+autos+disponibles" target="_blank" class="nav-cta">WhatsApp</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" style="background-image: url('puf.png');"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Balnearia · Córdoba · Arg</div>
+    <h1 class="hero-title">
+      <span id="hero-title-l1">Te asesoramos</span>
+      <span id="hero-title-l2">para que llegués</span>
+    </h1>
+    <p class="hero-subtitle" id="hero-sub">Venta de autos usados y 0km. Financiación a medida, toma de usados y atención personalizada en Balnearia, Córdoba.</p>
+    <div class="hero-btns">
+      <a href="#vehiculos" class="btn-primary">Ver stock disponible</a>
+      <a href="https://wa.me/5493564410038?text=Hola%2C+quiero+información+sobre+los+autos+disponibles" target="_blank" class="btn-outline">💬 Consultar por WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="stat-vehiculos">17</div>
+      <div class="hero-stat-label">Vehículos en stock</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="stat-clientes">+350</div>
+      <div class="hero-stat-label">Clientes satisfechos</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="stat-anos">+5<span>años</span></div>
+      <div class="hero-stat-label">De experiencia</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="stat-satisfaccion">100<span>%</span></div>
+      <div class="hero-stat-label">Compromiso</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- VEHÍCULOS + BUSCADOR INTEGRADO -->
+<section id="vehiculos">
+  <div class="section-header fade-up">
+    <div class="section-label">✦ Catálogo</div>
+    <h2 class="section-title">Nuestro <span>stock</span></h2>
+    <p class="section-sub">Todos los vehículos con documentación al día y revisión técnica completa.</p>
+    <div class="divider"></div>
+  </div>
+
+  <!-- BUSCADOR COMPACTO INTEGRADO -->
+  <div class="search-bar fade-up">
+    <div class="search-bar-inner">
+      <div class="search-field">
+        <label>Marca</label>
+        <select id="f-marca">
+          <option value="">Todas</option>
+          <option>Toyota</option><option>Ford</option><option>Chevrolet</option>
+          <option>Volkswagen</option><option>Honda</option><option>Renault</option>
+          <option>Peugeot</option><option>Jeep</option><option>Fiat</option>
+          <option>Nissan</option><option>Citroen</option><option>Otro</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Precio mín.</label>
+        <select id="f-precio-min">
+          <option value="">Sin mínimo</option>
+          <option value="5000000">$5M</option>
+          <option value="10000000">$10M</option>
+          <option value="20000000">$20M</option>
+          <option value="30000000">$30M</option>
+          <option value="50000000">$50M</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Precio máx.</label>
+        <select id="f-precio-max">
+          <option value="">Sin máximo</option>
+          <option value="15000000">$15M</option>
+          <option value="25000000">$25M</option>
+          <option value="40000000">$40M</option>
+          <option value="60000000">$60M</option>
+          <option value="80000000">$80M</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Km máx.</label>
+        <select id="f-km">
+          <option value="">Cualquier km</option>
+          <option value="20000">20.000 km</option>
+          <option value="50000">50.000 km</option>
+          <option value="100000">100.000 km</option>
+          <option value="150000">150.000 km</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Combustible</label>
+        <select id="f-comb">
+          <option value="">Todos</option>
+          <option>Nafta</option><option>Diesel</option><option>Híbrido</option><option>GNC</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Transmisión</label>
+        <select id="f-trans">
+          <option value="">Todas</option>
+          <option>Manual</option><option>Automática</option>
+        </select>
+      </div>
+      <button class="search-btn-inline" onclick="searchVehicles()">🔍 Buscar</button>
+    </div>
+  </div>
+
+  <div class="vehicles-header">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="filterTab('todos',this)">Todos</button>
+      <button class="tab-btn" onclick="filterTab('suv',this)">SUV</button>
+      <button class="tab-btn" onclick="filterTab('sedan',this)">Sedán</button>
+      <button class="tab-btn" onclick="filterTab('pickup',this)">Pickup</button>
+      <button class="tab-btn" onclick="filterTab('hatchback',this)">Hatchback</button>
+    </div>
+  </div>
+  <div class="vehicles-grid" id="vehiclesGrid"></div>
+  <div style="text-align:center;margin-top:40px;">
+    <a href="https://wa.me/5493564410038?text=Hola%2C+quiero+ver+todo+el+stock+disponible" target="_blank" class="btn-outline" style="display:inline-block">Ver todo el stock por WhatsApp</a>
+  </div>
+</section>
+
+<!-- MODAL DETALLE -->
+<div class="modal-overlay" id="vehicleModal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <!-- GALERÍA GRANDE -->
+    <div class="modal-gallery">
+      <img id="modalMainImg" src="" alt="Vehículo">
+      <button class="gallery-nav gallery-prev" onclick="galleryNav(-1)">&#8592;</button>
+      <button class="gallery-nav gallery-next" onclick="galleryNav(1)">&#8594;</button>
+      <div class="gallery-dots" id="galleryDots"></div>
+    </div>
+
+    <!-- CUERPO: info + specs -->
+    <div class="modal-body">
+      <div class="modal-info">
+        <div class="modal-car-name" id="modalName"></div>
+        <div class="modal-car-year" id="modalYear"></div>
+        <div class="modal-car-price" id="modalPrice"></div>
+        <div class="modal-car-desc" id="modalDesc"></div>
+        <div class="modal-car-btns">
+          <a id="modalWaBtn" href="#" target="_blank" class="btn-modal-wa">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar por WhatsApp
+          </a>
+          <a href="#financiacion" onclick="closeModal()" class="btn-modal-fin">💳 Solicitar financiación</a>
+          <button class="btn-modal-reserve" onclick="showNotification('¡Reserva solicitada! Te contactamos pronto ✅','success')">🔒 Reservar vehículo</button>
+        </div>
+      </div>
+      <div class="modal-specs-panel">
+        <div class="specs-title">Especificaciones técnicas</div>
+        <div id="modalSpecs"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINANCIACIÓN -->
+<section id="financiacion">
+  <div class="section-header fade-up">
+    <div class="section-label">✦ Finanzas</div>
+    <h2 class="section-title">Financiación <span>a tu medida</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="fin-grid">
+    <div class="fade-up">
+      <div class="fin-cards">
+        <div class="fin-card">
+          <div class="fin-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <div class="fin-card-title">Financiación directa</div>
+            <div class="fin-card-desc">Hasta 60 cuotas fijas. Aprobación rápida. Sin garante para clientes con buen historial crediticio.</div>
+          </div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+          </div>
+          <div>
+            <div class="fin-card-title">Crédito prendario</div>
+            <div class="fin-card-desc">Convenios con los principales bancos. Las mejores tasas del mercado para tu vehículo.</div>
+          </div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <div>
+            <div class="fin-card-title">Toma de usados</div>
+            <div class="fin-card-desc">Tomamos tu auto como parte de pago. Tasación gratuita y precio justo garantizado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up fade-up-delay-2">
+      <div style="background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:32px;">
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:22px;text-transform:uppercase;">Solicitar financiación</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="fin-nombre" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" id="fin-tel" placeholder="3564 000000">
+          </div>
+          <div class="form-group full">
+            <label>Vehículo que te interesa</label>
+            <input type="text" id="fin-vehiculo" placeholder="Ej: Toyota Hilux 2022">
+          </div>
+          <div class="form-group full">
+            <label>Ingreso aproximado mensual</label>
+            <select id="fin-ingreso">
+              <option>Menos de $500.000</option>
+              <option>$500.000 - $1.000.000</option>
+              <option>$1.000.000 - $2.000.000</option>
+              <option>Más de $2.000.000</option>
+            </select>
+          </div>
+        </div>
+        <button class="form-submit" onclick="submitFinanciacion()">Solicitar financiación</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENDER -->
+<section id="vender">
+  <div class="sell-grid">
+    <div class="fade-up">
+      <div class="section-label">✦ Tasación gratuita</div>
+      <div class="sell-info-title">Vendé tu<br>auto con<br><span>Motorwagen</span></div>
+      <p class="sell-info-desc">Tasamos tu vehículo de forma gratuita y te ofrecemos el mejor precio del mercado. El proceso es simple, rápido y transparente.</p>
+      <div class="sell-steps">
+        <div class="sell-step">
+          <div class="sell-step-num">1</div>
+          <div class="sell-step-text">Completá el formulario con los datos de tu vehículo.</div>
+        </div>
+        <div class="sell-step">
+          <div class="sell-step-num">2</div>
+          <div class="sell-step-text">Te contactamos para hacer la tasación y coordinar la visita.</div>
+        </div>
+        <div class="sell-step">
+          <div class="sell-step-num">3</div>
+          <div class="sell-step-text">Recibís una oferta firme. Si la aceptás, el pago es inmediato.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up fade-up-delay-2">
+      <div style="background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:32px;">
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:22px;text-transform:uppercase;">Datos de tu auto</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Tu nombre</label>
+            <input type="text" id="v-nombre" placeholder="Nombre y apellido">
+          </div>
+          <div class="form-group">
+            <label>Tu teléfono</label>
+            <input type="tel" id="v-tel" placeholder="3564 000000">
+          </div>
+          <div class="form-group">
+            <label>Marca</label>
+            <select><option>Toyota</option><option>Ford</option><option>Chevrolet</option><option>Volkswagen</option><option>Honda</option><option>Otro</option></select>
+          </div>
+          <div class="form-group">
+            <label>Modelo</label>
+            <input type="text" placeholder="Ej: Hilux">
+          </div>
+          <div class="form-group">
+            <label>Año</label>
+            <input type="number" placeholder="2020">
+          </div>
+          <div class="form-group">
+            <label>Kilometraje</label>
+            <input type="number" placeholder="50000">
+          </div>
+        </div>
+        <button class="form-submit" onclick="submitVender()">Solicitar tasación gratuita</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="section-header fade-up">
+    <div class="section-label">✦ Clientes</div>
+    <h2 class="section-title">Lo que dicen <span>nuestros clientes</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio-card fade-up">
+      <div class="stars">★★★★★</div>
+      <p class="testimonio-text">"Excelente atención desde el primer momento. Me asesoraron muy bien y encontré la camioneta que buscaba al precio justo. 100% recomendables."</p>
+      <div class="testimonio-author">
+        <div class="author-avatar">MD</div>
+        <div><div class="author-name">Martín Delfino</div><div class="author-car">Chevrolet S-10 4x4 · Sunchales</div></div>
+      </div>
+    </div>
+    <div class="testimonio-card fade-up fade-up-delay-1">
+      <div class="stars">★★★★★</div>
+      <p class="testimonio-text">"Me tomaron el auto en parte de pago y me trataron muy bien. Todo fue transparente y rápido. Quedé muy conforme con la operación."</p>
+      <div class="testimonio-author">
+        <div class="author-avatar">AG</div>
+        <div><div class="author-name">Adriana González</div><div class="author-car">Toyota Hilux · Balnearia</div></div>
+      </div>
+    </div>
+    <div class="testimonio-card fade-up fade-up-delay-2">
+      <div class="stars">★★★★★</div>
+      <p class="testimonio-text">"La financiación fue muy accesible y me aprobaron rápido. El proceso fue muy ágil y sin complicaciones. Gracias a todo el equipo."</p>
+      <div class="testimonio-author">
+        <div class="author-avatar">JF</div>
+        <div><div class="author-name">Jorge Fernández</div><div class="author-car">Ford Ranger · Las Varillas</div></div>
+      </div>
+    </div>
+    <div class="testimonio-card fade-up fade-up-delay-3">
+      <div class="stars">★★★★★</div>
+      <p class="testimonio-text">"Muy buena atención por WhatsApp. Me respondieron enseguida todas las consultas antes de ir. El auto estaba tal cual como lo describían."</p>
+      <div class="testimonio-author">
+        <div class="author-avatar">LR</div>
+        <div><div class="author-name">Laura Rodríguez</div><div class="author-car">Volkswagen Polo · Córdoba</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="nosotros-grid">
+    <div class="nosotros-img fade-up">
+      <img src="corolla.png" alt="Motorwagen Automotores showroom"
+           onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80'">
+    </div>
+    <div class="fade-up fade-up-delay-2">
+      <div class="section-label">✦ Nuestra historia</div>
+      <h2 class="section-title" id="nosotros-title-el">Más de 5 años<br>de <span>confianza</span></h2>
+      <div class="divider" style="margin-bottom:20px"></div>
+      <p style="color:var(--gray2);font-size:14px;line-height:1.7;margin-bottom:22px;" id="nosotros-desc-el">
+        Motorwagen Automotores nació con una misión simple: hacer que comprar o vender un auto sea una experiencia transparente, ágil y satisfactoria. Hoy somos referentes en Balnearia y la región, con cientos de familias que confiaron en nosotros para encontrar su vehículo ideal.
+      </p>
+      <div class="garantias">
+        <div class="garantia">
+          <svg class="garantia-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="garantia-text"><strong>Documentación al día</strong> — Todos los trámites de transferencia sin costo extra.</div>
+        </div>
+        <div class="garantia">
+          <svg class="garantia-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="garantia-text"><strong>Revisión técnica completa</strong> — Cada auto es auditado antes de publicarse.</div>
+        </div>
+        <div class="garantia">
+          <svg class="garantia-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="garantia-text"><strong>Precios transparentes</strong> — Lo que ves es lo que pagás. Sin cargos ocultos.</div>
+        </div>
+        <div class="garantia">
+          <svg class="garantia-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="garantia-text"><strong>Asesoramiento personalizado</strong> — Te acompañamos en todo el proceso.</div>
+        </div>
+      </div>
+      <div class="nosotros-stats">
+        <div class="nosotros-stat"><div class="nosotros-stat-num">350+</div><div class="nosotros-stat-label">Clientes</div></div>
+        <div class="nosotros-stat"><div class="nosotros-stat-num">17</div><div class="nosotros-stat-label">Stock</div></div>
+        <div class="nosotros-stat"><div class="nosotros-stat-num">5+</div><div class="nosotros-stat-label">Años</div></div>
+        <div class="nosotros-stat"><div class="nosotros-stat-num">100%</div><div class="nosotros-stat-label">Compromiso</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion" style="background:var(--dark2)">
+  <div class="section-header fade-up">
+    <div class="section-label">✦ Dónde estamos</div>
+    <h2 class="section-title">Visitá <span>nuestro local</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="ubicacion-grid">
+    <div class="map-container fade-up">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.02!2d-62.6763962!3d-31.0102199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943499109b9e83fb%3A0xfa751ddd1fb8dc01!2sMotorwagen!5e0!3m2!1ses!2sar!4v1700000000000"
+        allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+    <div class="contact-cards fade-up fade-up-delay-2">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-title">Dirección</div>
+          <div class="contact-card-info">Balnearia, Córdoba<br>Argentina</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-title">Teléfono</div>
+          <div class="contact-card-info"><a href="tel:+5493564410038">3564 410038</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-title">Horario</div>
+          <div class="contact-card-info">Lunes a Viernes: 9:00 – 19:00<br>Sábados: 9:00 – 14:00</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon" style="background:rgba(37,211,102,0.15);color:#25D366">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <div class="contact-card-title">WhatsApp Business</div>
+          <div class="contact-card-info"><a href="https://wa.me/5493564410038" target="_blank" style="color:#25D366">3564 410038</a><br><small style="color:#25D366">Respondemos rápido</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <div class="section-header fade-up" style="text-align:center">
+      <div class="section-label" style="text-align:center">✦ Contacto</div>
+      <h2 class="section-title">¿Tenés alguna <span>consulta?</span></h2>
+      <div class="divider" style="margin:14px auto 0"></div>
+    </div>
+    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:40px;" class="fade-up">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" id="c-nombre" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" id="c-tel" placeholder="3564 000000">
+        </div>
+        <div class="form-group full">
+          <label>Consulta</label>
+          <textarea id="c-consulta" placeholder="¿En qué podemos ayudarte?"></textarea>
+        </div>
+      </div>
+      <button class="form-submit" onclick="submitContactForm()">Enviar consulta</button>
+    </div>
+  </div>
+</section>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/5493564410038?text=Hola%2C+quiero+información+sobre+los+autos+disponibles" target="_blank" class="wa-float">
+  <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <div class="wa-tooltip">¡Consultanos ahora!</div>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">MOTOR<span>WAGEN</span></div>
+      <p class="footer-desc">Tu concesionaria de confianza en Balnearia, Córdoba. Te asesoramos para que llegués al auto que buscás.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/motorwagenautomotores" target="_blank" class="social-btn" title="Instagram">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://wa.me/5493564410038" target="_blank" class="social-btn" title="WhatsApp" style="color:#25D366;border-color:rgba(37,211,102,0.4)">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <div class="footer-links">
+        <a href="#vehiculos">Comprar auto</a>
+        <a href="#vender">Vender mi auto</a>
+        <a href="#financiacion">Financiación</a>
+        <a href="#financiacion">Toma de usados</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Información</div>
+      <div class="footer-links">
+        <a href="#nosotros">Sobre nosotros</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-links">
+        <a href="tel:+5493564410038">3564 410038</a>
+        <a href="https://wa.me/5493564410038" target="_blank">WhatsApp directo</a>
+        <a>Balnearia, Córdoba</a>
+        <a style="color:var(--gray)">Lun–Vie: 9 a 19hs</a>
+        <a style="color:var(--gray)">Sáb: 9 a 14hs</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Motorwagen Automotores · Balnearia, Córdoba</p>
+    <p style="font-size:11px;color:#444;">Diseño &amp; desarrollo por <a href="#" target="_blank" style="color:#555;text-decoration:none;">vertex.dev</a></p>
+    <a ⚙ </a>
+  </div>
+</footer>
+
+<div class="notification" id="notification"></div>
+<script src="index.js"></script>
+</body>
+</html>

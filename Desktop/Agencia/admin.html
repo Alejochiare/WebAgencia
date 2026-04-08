@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin | Motorwagen Automotores</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon">M</div>
+    <div class="sidebar-logo-text">Motorwagen <small>Admin Panel</small></div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">General</div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" id="nav-dashboard" onclick="navigate('dashboard')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </div>
+    </nav>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Catálogo</div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" id="nav-vehiculos" onclick="navigate('vehiculos')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Vehículos
+      </div>
+    </nav>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Comunicaciones</div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" id="nav-mensajes" onclick="navigate('mensajes')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Mensajes
+        <span class="nav-badge" id="msg-badge"></span>
+      </div>
+    </nav>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Sitio Web</div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" id="nav-textos" onclick="navigate('textos')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Textos del sitio
+      </div>
+      <div class="nav-item" id="nav-imagenes" onclick="navigate('imagenes')">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Imágenes
+      </div>
+    </nav>
+  </div>
+
+  <div class="sidebar-footer">
+    <a href="index.html" target="_blank" class="sidebar-site-link">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Ver sitio público
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="hamburger-admin" onclick="toggleSidebar()">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-sm ghost" onclick="exportData()">⬇ Exportar backup</button>
+      <label class="btn-sm ghost" style="cursor:pointer">⬆ Importar <input type="file" accept=".json" style="display:none" onchange="importData(this)"></label>
+      <a href="index.html" target="_blank" class="btn-sm primary">🌐 Ver sitio</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- ══════════ DASHBOARD ══════════ -->
+    <div class="section-panel active" id="panel-dashboard">
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div><div class="stat-num" id="dash-total">—</div><div class="stat-label">Total vehículos</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div><div class="stat-num" id="dash-activos">—</div><div class="stat-label">Publicados</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon yellow">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div><div class="stat-num" id="dash-msgs">—</div><div class="stat-label">Mensajes nuevos</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><line x1="13" y1="16" x2="13" y2="16"/></svg>
+          </div>
+          <div><div class="stat-num" id="dash-pickups">—</div><div class="stat-label">Pickups en stock</div></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px">
+        <div>
+          <div class="panel-header">
+            <div class="panel-title">Últimos vehículos</div>
+            <button class="btn-sm primary" onclick="openVehicleModal();navigate('vehiculos')">+ Agregar</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Vehículo</th><th>Año</th><th>Precio</th><th>Estado</th><th></th></tr></thead>
+              <tbody id="recent-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <div class="panel-header">
+            <div class="panel-title">Mensajes recientes</div>
+            <button class="btn-sm ghost" onclick="navigate('mensajes')">Ver todos</button>
+          </div>
+          <div id="recent-msgs"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+        <div class="panel-title" style="margin-bottom:14px;font-size:14px">Acciones rápidas</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn-sm primary" onclick="openVehicleModal();navigate('vehiculos')">+ Nuevo vehículo</button>
+          <button class="btn-sm ghost" onclick="navigate('mensajes')">📬 Ver mensajes</button>
+          <button class="btn-sm ghost" onclick="navigate('textos')">✏ Editar textos</button>
+          <button class="btn-sm ghost" onclick="exportData()">⬇ Backup de datos</button>
+          <a href="index.html" target="_blank" class="btn-sm ghost">🌐 Ver sitio</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ VEHÍCULOS ══════════ -->
+    <div class="section-panel" id="panel-vehiculos">
+      <div class="panel-header">
+        <div class="panel-title">Vehículos en catálogo</div>
+        <button class="btn-sm primary" onclick="openVehicleModal()">+ Agregar vehículo</button>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" class="search-input" id="search-vehicles" placeholder="Buscar por marca o modelo…" oninput="searchVehiclesAdmin()">
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Vehículo</th>
+              <th>Año</th>
+              <th>Precio</th>
+              <th>Km</th>
+              <th>Tipo</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="vehicles-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════════ MENSAJES ══════════ -->
+    <div class="section-panel" id="panel-mensajes">
+      <div class="panel-header">
+        <div class="panel-title">Consultas recibidas</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn-sm success" onclick="markAllRead()">✓ Marcar todos leídos</button>
+          <button class="btn-sm danger" onclick="clearAllMsgs()">🗑 Eliminar todos</button>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="btn-sm primary" onclick="renderMessages('todos')">Todos</button>
+        <button class="btn-sm ghost" onclick="renderMessages('nuevos')">Solo nuevos</button>
+      </div>
+
+      <div id="messages-wrap"></div>
+    </div>
+
+    <!-- ══════════ TEXTOS ══════════ -->
+    <div class="section-panel" id="panel-textos">
+      <div class="panel-header">
+        <div class="panel-title">Textos del sitio público</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn-sm ghost" onclick="resetTexts()">↺ Restablecer</button>
+          <button class="btn-sm primary" onclick="saveTextsForm()">💾 Guardar cambios</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px">
+        <p style="font-size:12px;color:var(--gray);margin-bottom:20px">Los cambios se reflejan en el sitio público cuando el visitante recarga la página.</p>
+
+        <div style="margin-bottom:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px">Hero Principal</div>
+          <div class="text-editor-grid">
+            <div class="text-field">
+              <label>Título línea 1</label>
+              <input type="text" id="txt-hero-title-line1" placeholder="Te asesoramos">
+            </div>
+            <div class="text-field">
+              <label>Título línea 2</label>
+              <input type="text" id="txt-hero-title-line2" placeholder="para que llegués">
+            </div>
+            <div class="text-field full">
+              <label>Subtítulo hero</label>
+              <input type="text" id="txt-hero-subtitle" placeholder="Descripción corta del negocio">
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px">Estadísticas (Hero)</div>
+          <div class="text-editor-grid">
+            <div class="text-field"><label>Vehículos en stock</label><input type="text" id="txt-stat-vehiculos" placeholder="50+"></div>
+            <div class="text-field"><label>Clientes satisfechos</label><input type="text" id="txt-stat-clientes" placeholder="500+"></div>
+            <div class="text-field"><label>Años de experiencia</label><input type="text" id="txt-stat-anos" placeholder="+10 años"></div>
+            <div class="text-field"><label>Compromiso / satisfacción</label><input type="text" id="txt-stat-satisfaccion" placeholder="100%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px">Sección Nosotros</div>
+          <div class="text-editor-grid">
+            <div class="text-field full"><label>Título "Nosotros"</label><input type="text" id="txt-nosotros-title" placeholder="Más de 10 años de confianza"></div>
+            <div class="text-field full"><label>Descripción "Nosotros"</label><textarea id="txt-nosotros-desc" rows="3" placeholder="Descripción de la empresa…"></textarea></div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;text-align:right">
+          <button class="btn-sm primary" onclick="saveTextsForm()" style="padding:10px 28px">💾 Guardar todos los cambios</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ IMÁGENES ══════════ -->
+    <div class="section-panel" id="panel-imagenes">
+      <div class="panel-header">
+        <div class="panel-title">Biblioteca de imágenes</div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px">
+        <p style="font-size:12px;color:var(--gray);margin-bottom:16px">
+          Guardá URLs de imágenes para tenerlas disponibles al cargar vehículos. Podés usar links de Instagram, Google Drive (compartido), Imgur, etc.
+        </p>
+        <div class="form-grid2" style="margin-bottom:12px">
+          <div class="form-group-a">
+            <label>URL de la imagen</label>
+            <input type="url" id="global-img-url" placeholder="https://…/foto.jpg">
+          </div>
+          <div class="form-group-a">
+            <label>Etiqueta (opcional)</label>
+            <input type="text" id="global-img-label" placeholder="Ej: Toyota Hilux Blanca">
+          </div>
+        </div>
+        <button class="btn-sm primary" onclick="addGlobalImage()">+ Guardar imagen</button>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px">
+        <div class="panel-title" style="font-size:14px;margin-bottom:6px">Imágenes guardadas</div>
+        <p style="font-size:12px;color:var(--gray);margin-bottom:6px">Podés copiar las URLs desde acá para usarlas en los vehículos.</p>
+        <div id="img-gallery"></div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid rgba(245,158,11,0.2);border-radius:var(--radius);padding:20px;margin-top:20px">
+        <div style="font-size:13px;font-weight:600;color:var(--yellow);margin-bottom:8px">💡 Tip para subir a Hostinger</div>
+        <p style="font-size:12px;color:var(--gray);line-height:1.6">
+          Cuando subas el sitio a Hostinger, podés subir las fotos al <strong>File Manager</strong> y referenciarlas como <code style="background:var(--panel);padding:2px 6px;border-radius:4px">/fotos/mi-auto.jpg</code>. 
+          También podés usar un servicio externo como <strong>Cloudinary</strong> o <strong>ImgBB</strong> para hospedar las imágenes gratis.
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- ══════ MODAL VEHÍCULO ══════ -->
+<div class="modal-bg" id="modal-vehicle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-title" id="modal-v-title">Agregar Vehículo</div>
+      <button class="modal-close-btn" onclick="closeVehicleModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid2">
+
+        <div class="form-group-a">
+          <label>Marca *</label>
+          <select id="v-marca">
+            <option value="">Seleccionar…</option>
+            <option>Toyota</option><option>Ford</option><option>Chevrolet</option>
+            <option>Volkswagen</option><option>Honda</option><option>Renault</option>
+            <option>Peugeot</option><option>Fiat</option><option>Jeep</option>
+            <option>Nissan</option><option>Citroen</option><option>Otro</option>
+          </select>
+        </div>
+
+        <div class="form-group-a">
+          <label>Modelo *</label>
+          <input type="text" id="v-modelo" placeholder="Ej: Hilux SRX">
+        </div>
+
+        <div class="form-group-a">
+          <label>Año</label>
+          <input type="number" id="v-anio" placeholder="2022" min="1990" max="2026">
+        </div>
+
+        <div class="form-group-a">
+          <label>Precio ARS</label>
+          <input type="number" id="v-precio" placeholder="48000000">
+        </div>
+
+        <div class="form-group-a">
+          <label>Kilometraje</label>
+          <input type="number" id="v-km" placeholder="32000">
+        </div>
+
+        <div class="form-group-a">
+          <label>Combustible</label>
+          <select id="v-comb">
+            <option>Diesel</option><option>Nafta</option><option>GNC</option><option>Híbrido</option>
+          </select>
+        </div>
+
+        <div class="form-group-a">
+          <label>Transmisión</label>
+          <select id="v-trans">
+            <option>Manual</option><option>Automática</option>
+          </select>
+        </div>
+
+        <div class="form-group-a">
+          <label>Tipo</label>
+          <select id="v-tipo">
+            <option value="pickup">Pickup</option>
+            <option value="suv">SUV</option>
+            <option value="sedan">Sedán</option>
+            <option value="hatchback">Hatchback</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="form-group-a">
+          <label>Color</label>
+          <input type="text" id="v-color" placeholder="Blanco">
+        </div>
+
+        <div class="form-group-a">
+          <label>Motor</label>
+          <input type="text" id="v-motor" placeholder="2.8L TD 200cv">
+        </div>
+
+        <div class="form-group-a">
+          <label>Ubicación</label>
+          <input type="text" id="v-ubicacion" placeholder="Balnearia, Córdoba">
+        </div>
+
+        <div class="form-group-a">
+          <label>Badge / etiqueta</label>
+          <input type="text" id="v-badge" placeholder="Ej: Destacado, Nuevo, Premium">
+        </div>
+
+        <div class="form-group-a full">
+          <label>Descripción</label>
+          <textarea id="v-desc" rows="3" placeholder="Descripción del vehículo…"></textarea>
+        </div>
+
+        <div class="form-group-a full">
+          <label>Fotos</label>
+
+          <!-- Subir desde la computadora -->
+          <label id="upload-foto-btn" style="
+            display:flex;align-items:center;justify-content:center;gap:8px;
+            background:var(--blue);color:white;padding:10px 16px;border-radius:8px;
+            font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+            cursor:pointer;transition:background 0.2s;margin-bottom:8px;
+          " onmouseover="this.style.background='#1976D2'" onmouseout="this.style.background='var(--blue)'">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Subir fotos desde la computadora
+            <input type="file" accept="image/*" multiple style="display:none" onchange="uploadFotosLocal(this)">
+          </label>
+
+          <!-- O por URL -->
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <div style="flex:1;height:1px;background:var(--border)"></div>
+            <span style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:0.1em">o por URL</span>
+            <div style="flex:1;height:1px;background:var(--border)"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <input type="url" id="v-foto-url" placeholder="https://…/foto.jpg" style="flex:1;background:var(--card);border:1px solid var(--border);color:white;padding:9px 12px;border-radius:8px;font-size:13px;outline:none">
+            <button class="btn-sm ghost" onclick="addFotoUrl()">+ Agregar</button>
+          </div>
+
+          <div class="input-hint" style="margin-top:6px">Podés subir varias fotos a la vez. La primera será la imagen principal del auto.</div>
+          <div class="fotos-preview" id="fotos-preview-wrap" style="margin-top:12px"></div>
+        </div>
+
+        <div class="form-group-a full" style="flex-direction:row;align-items:center;gap:10px">
+          <input type="checkbox" id="v-activo" style="width:16px;height:16px;accent-color:var(--blue)">
+          <label style="text-transform:none;letter-spacing:0;font-size:13px;color:var(--gray2)">Publicar en el sitio (visible para clientes)</label>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm ghost" onclick="closeVehicleModal()">Cancelar</button>
+      <button class="btn-sm primary" onclick="saveVehicleForm()">💾 Guardar vehículo</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="admin-toast" id="admin-toast"></div>
+
+<script src="admin.js"></script>
+<script>
+  // Init images gallery on load
+  document.addEventListener('DOMContentLoaded', () => {
+    renderImagesGallery();
+  });
+</script>
+</body>
+</html>
