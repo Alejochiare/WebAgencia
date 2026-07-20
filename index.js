@@ -41,17 +41,6 @@ const DEFAULT_VEHICLES = [
     ]
   },
   {
-    id: 4, marca: 'Ford', modelo: 'Ranger XLS', anio: 2020,
-    precio: 36000000, km: 62000, comb: 'Diesel', trans: 'Manual',
-    color: 'Azul', motor: '2.2L TDCi 160cv', ubicacion: 'Balnearia, Córdoba',
-    tipo: 'pickup', badge: '',
-    desc: 'Ford Ranger XLS 4x2 en impecable estado. Mantenimiento completo. Ideal para trabajo y familia.',
-    fotos: [
-      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=900&q=80',
-      'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=900&q=80'
-    ]
-  },
-  {
     id: 5, marca: 'Jeep', modelo: 'Compass Sport', anio: 2022,
     precio: 41000000, km: 22000, comb: 'Nafta', trans: 'Automática',
     color: 'Rojo', motor: '1.3L Turbo 150cv', ubicacion: 'Balnearia, Córdoba',
