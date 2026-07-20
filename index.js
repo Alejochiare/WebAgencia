@@ -8,59 +8,36 @@ const WA_BASE   = `https://wa.me/${WA_NUMBER}`;
 /* ─── DEFAULT VEHICLES (used only if admin hasn't saved any) ─── */
 const DEFAULT_VEHICLES = [
   {
-    id: 1, marca: 'Chevrolet', modelo: 'S-10 4x4', anio: 2021,
-    precio: 48000000, km: 32000, comb: 'Diesel', trans: 'Manual',
-    color: 'Gris', motor: '2.8L TD 200cv', ubicacion: 'Balnearia, Córdoba',
-    tipo: 'pickup', badge: 'Destacado',
-    desc: 'Chevrolet S-10 High Country 4x4 en excelente estado. Un solo dueño, service al día, nunca patinada. Equipamiento completo con cuero, pantalla tactil y cámara trasera.',
-    fotos: [
-      'https://images.unsplash.com/photo-1558981285-501cd373af7e?w=900&q=80',
-      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=900&q=80'
-    ]
+    id: 1, marca: 'Fiat', modelo: 'Pulse Active Manual', anio: 2022,
+    precio: 14.000000 , km: 13000, comb: 'Nafta', trans: 'Manual',
+    color: '', motor: '', ubicacion: 'Balnearia, Córdoba',
+    tipo: 'suv', badge: 'Nuevo ingreso ✅',
+    desc: 'Fiat Pulse Active Manual 2022, 13.000 km 🔥.',
+    fotos: [ 'fiat-pulse.png' ]
   },
   {
-    id: 2, marca: 'Toyota', modelo: 'Hilux SRX', anio: 2022,
-    precio: 57000000, km: 18000, comb: 'Diesel', trans: 'Automática',
-    color: 'Blanco', motor: '2.8L TDI 204cv', ubicacion: 'Balnearia, Córdoba',
-    tipo: 'pickup', badge: 'Nuevo',
-    desc: 'Toyota Hilux SRX AT 4x4. La pickup más confiable del mercado. Garantía de fábrica vigente. Cero cuotas impagas.',
-    fotos: [
-      'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=900&q=80',
-      'https://images.unsplash.com/photo-1558981033-a35b48e72bf2?w=900&q=80'
-    ]
+    id: 2, marca: 'Volkswagen', modelo: 'Amarok Trendline 4x2 Manual', anio: 2025,
+    precio: 25.000000, km: 23000, comb: 'Diesel', trans: 'Manual',
+    color: '', motor: '', ubicacion: 'Balnearia, Córdoba',
+    tipo: 'pickup', badge: 'Nuevo ingreso ✅',
+    desc: 'Volkswagen Amarok Trendline 4x2 Manual 2025, 23.000 km.',
+    fotos: [ 'amarok.png' ]
   },
   {
-    id: 3, marca: 'Volkswagen', modelo: 'Amarok V6', anio: 2023,
-    precio: 72000000, km: 7500, comb: 'Diesel', trans: 'Automática',
-    color: 'Negro', motor: '3.0L V6 TDI 258cv', ubicacion: 'Balnearia, Córdoba',
-    tipo: 'pickup', badge: 'Premium',
-    desc: 'Volkswagen Amarok V6 de máxima categoría. La pickup más potente del segmento. Todos los extras. Garantía vigente.',
-    fotos: [
-      'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80',
-      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80'
-    ]
+    id: 3, marca: 'Toyota', modelo: 'Corolla SEG', anio: 2022,
+    precio: 18.000000, km: 45000, comb: 'Nafta', trans: 'Manual',
+    color: '', motor: '', ubicacion: 'Balnearia, Córdoba',
+    tipo: 'sedan', badge: 'Nuevo ingreso ✅',
+    desc: 'Toyota Corolla SEG 2022, 45.000 km. Todos los servicios oficiales TOYOTA. Cuatro cubiertas nuevas.',
+    fotos: [ 'corolla.png' ]
   },
   {
-    id: 5, marca: 'Jeep', modelo: 'Compass Sport', anio: 2022,
-    precio: 41000000, km: 22000, comb: 'Nafta', trans: 'Automática',
-    color: 'Rojo', motor: '1.3L Turbo 150cv', ubicacion: 'Balnearia, Córdoba',
-    tipo: 'suv', badge: '',
-    desc: 'Jeep Compass Sport 4x2 automático. Un solo dueño, impecable. Financiación disponible.',
-    fotos: [
-      'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=900&q=80',
-      'https://images.unsplash.com/photo-1617469767104-a3e450b3e9ef?w=900&q=80'
-    ]
-  },
-  {
-    id: 6, marca: 'Volkswagen', modelo: 'Polo Track', anio: 2023,
-    precio: 24000000, km: 9000, comb: 'Nafta', trans: 'Manual',
-    color: 'Blanco', motor: '1.0L 84cv', ubicacion: 'Balnearia, Córdoba',
-    tipo: 'hatchback', badge: 'Nuevo',
-    desc: 'Volkswagen Polo Track 0km prácticamente. Económico, moderno y con garantía de fábrica.',
-    fotos: [
-      'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900&q=80',
-      'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=900&q=80'
-    ]
+    id: 4, marca: 'Volkswagen', modelo: 'Gol Trend Pack 3', anio: 2011,
+    precio: 12.000000, km: 100000, comb: 'Nafta', trans: 'Manual',
+    color: '', motor: '', ubicacion: 'Balnearia, Córdoba',
+    tipo: 'hatchback', badge: 'Nuevo ingreso ✅',
+    desc: 'Volkswagen Gol Trend Pack 3 2011, 100.000 km. Excelente 👌🏼.',
+    fotos: [ 'trend.png' ]
   }
 ];
 
